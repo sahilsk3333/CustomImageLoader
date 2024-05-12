@@ -7,10 +7,10 @@ import android.graphics.Bitmap
  * @author Sahil Khan
  */
 object ImageCache {
-    private const val CACHE_SIZE = 4 * 1024 * 1024 // 4MiB
+    private const val CACHE_SIZE = 20 * 1024 * 1024 // 20MiB
     private val memoryCache = androidx.collection.LruCache<String, Bitmap>(CACHE_SIZE)
 
-    fun get(url: String): Bitmap? = memoryCache.get(url)
+    fun get(url: String): Bitmap? = memoryCache[url]
 
     fun put(url: String, bitmap: Bitmap) {
         memoryCache.put(url, bitmap)
